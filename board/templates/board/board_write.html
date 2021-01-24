@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>Write</h1>
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <form method="POST" action="{% url 'board_write' %}">
+                {% csrf_token %}
+                {% for form in forms %}
+                    <div class="mb-3">
+                        <label for="{{ form.id_for_label }}" class="form-label">{{ form.label }}</label>
+                        <input type="{{ form.field.widget.input_type }}" class="form-control" id="{{ form.id_for_label }}" name="{{ form.name}}" placeholder="{{ form.label }}">
+                    </div>
+                    {% if form.errors %}
+                        <span style="color: red;">{{ form.errors }}</span>
+                    {% endif %}
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>    
+{% endblock %}
+        
+

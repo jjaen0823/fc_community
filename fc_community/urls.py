@@ -20,9 +20,11 @@ from django.conf.urls.static import static
 
 from fcuser.views import home
 import fcuser.urls
+import board.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', fcuser.views.home, name='home'),
     path('fcuser/', include(fcuser.urls)),
+    path('board/', include(board.urls)),
 ]  # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
