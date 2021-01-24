@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>Sign up</h1>
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div class="mb-3" >
+                    {{ error }}
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">User Name</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="User name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">User Email</label>
+                    <input type="email" class="form-control" id="useremail" name="useremail" placeholder="User email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="re-password" class="form-label">Check Password</label>
+                    <input type="password" class="form-control" id="re-password" name="re-password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>    
+{% endblock %}
+        
+
