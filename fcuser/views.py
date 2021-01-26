@@ -7,11 +7,11 @@ from .forms import LoginForm
 
 # Create your views here.
 def home(request):
-    user_id = request.session.get('user')
+    # user_id = request.session.get('user')
 
-    if user_id:
-        fcuser = Fcuser.objects.get(pk=user_id)
-        return HttpResponse(fcuser.username)
+    # if user_id:
+    #     fcuser = Fcuser.objects.get(pk=user_id)
+        
     return render(request, 'fcuser/home.html')
 
 
@@ -55,10 +55,14 @@ def login(request):
             # session
             request.session['user'] = forms.user_id
             return redirect('/')
+        # else:
+        #     error = 'User does not exist.'
+        #     return render(request, 'fcuser/login.html', {'error': error})
     else:  
         forms = LoginForm()
-    return render(request, 'fcuser/login.html', {'forms': forms})
+        return render(request, 'fcuser/login.html', {'forms': forms})
 """
+<Before using form>
 def login(request):  # Using Session
     if request.method == 'POST':
         username = request.POST.get('username', None)

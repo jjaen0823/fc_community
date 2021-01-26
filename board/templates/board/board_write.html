@@ -9,18 +9,25 @@
     </div>
     <div class="row mt-5">
         <div class="col-12">
-            <form method="POST" action="{% url 'board_write' %}">
+            <form method="POST" action="{% url 'write' %}">
                 {% csrf_token %}
                 {% for form in forms %}
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="{{ form.id_for_label }}" class="form-label">{{ form.label }}</label>
-                        <input type="{{ form.field.widget.input_type }}" class="form-control" id="{{ form.id_for_label }}" name="{{ form.name}}" placeholder="{{ form.label }}">
+                        {{ form.field.weight.name }}
+                        {% ifequal form.name 'contents' %}
+                            <textarea class="form-control" name="{{ form.name }}" id="{{ form.id_for_label }}" placeholder="{{ form.label }}" cols="30" rows="10"></textarea>
+                        {% else %}
+                        <input type="{{ form.field.widget.input_type }}" class="form-control" id="{{ form.id_for_label }}" 
+                                name="{{ form.name}}" placeholder="{{ form.label }}">
+                        {% endifequal %}
+                        
                     </div>
                     {% if form.errors %}
                         <span style="color: red;">{{ form.errors }}</span>
                     {% endif %}
                 {% endfor %}
-                <button type="submit" class="btn btn-primary">Sign up</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

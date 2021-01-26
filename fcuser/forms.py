@@ -19,7 +19,12 @@ class LoginForm(forms.Form):
         password = cleaned_data.get('password')
 
         if username and password:
-            fcuser = Fcuser.objects.get(username=username)
+            try:
+                fcuser = Fcuser.objects.get(username=username)
+            except Fcuser.DoesNotExist:
+                self.add_error('username', 'User does not exist.')
+                return 
+            
             if not check_password(password, fcuser.password):
                 self.add_error('password', 'Your Password is wrong!')
             else:

@@ -3,6 +3,6 @@ from .models import Board
 
 # Register your models here.
 class BoardAdmin(admin.ModelAdmin):
-    list_display = ('title', 'writer', 'pub_date')
+    list_display = ('title', 'writer', 'pub_date',)
 
 admin.site.register(Board, BoardAdmin)

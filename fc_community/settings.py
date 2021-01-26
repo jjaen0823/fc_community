@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     'board.apps.BoardConfig',  # board
     'fcuser.apps.FcuserConfig',  # fcuser
+    'tag.apps.TagConfig',  # tag
 ]
 
 MIDDLEWARE = [

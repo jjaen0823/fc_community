@@ -4,10 +4,34 @@
     <div class="row mt-5">
         <div class="col-12 text-center">
             <h2>Welcome home!</h2>
-            <a href="{% url 'register' %}">Sign up</a><br>
+            
+        </div>
+    </div>
+    <div class="row mt-5">
+        {% if request.session.user %}
+            <div class="col-6">
+                <button type="button" class="btn btn-primaty btn-block" onclick="location.href='/fcuser/logout/'">Logout</button>
+            </div>
+        {% else %}
+            <div class="col-6">
+                <button type="button" class="btn btn-primaty btn-block" onclick="location.href='/fcuser/register/'">Sign up</button>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-primaty btn-block" onclick="location.href='/fcuser/login/'">Login</button>
+            </div>
+        {% endif %}
+    </div>
+    <div class="row mt-5">
+        <div class="col-6">
+            <button type="button" class="btn btn-primaty btn-block" onclick="location.href='/board/list/'">Board List</button>
+        </div>
+        <!-- <div class="col-6">
+            <button class="btn btn-primaty">Write</button>
+        </div> -->
+            <!-- <a href="{% url 'register' %}">Sign up</a><br>
             <a href="{% url 'login' %}">Login</a><br>
             <a href="{% url 'list' %}">Board List</a><br>
-            {% comment %} <a href="{% url 'write' %}">Write</a> {% endcomment %}
+            <a href="{% url 'write' %}">Write</a> -->
         </div>
     </div>
 </div>    
